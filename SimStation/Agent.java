@@ -59,6 +59,11 @@ public abstract class Agent extends Model implements Runnable
 		this.heading = heading;
 	}
 	
+	public void setSimulation(Simulation sim) // set this in Simlation when Sim adds Agents
+	{
+		this.sim = sim; // agent.SetSimlation(this); goes within addAgent within Simulation
+	}
+	
 	@Override
 	public void run() {
 		thread = Thread.currentThread(); // catch my thread
