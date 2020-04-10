@@ -1,5 +1,7 @@
 package SimStation;
 
+import java.util.Random;
+
 import mvc.*;
 
 
@@ -13,15 +15,18 @@ public abstract class Agent extends Model implements Runnable
 	protected Simulation sim;
 	private int x, y;
 	private AgentState state;
-	private boolean suspend = false;
-	private boolean stopped = false;
 	private static int WORLD_SIZE = 250;
+	Random rand;
 	//private boolean suspend = false;
 	
 	public Agent(String name) {
 		this.name = name;
 		state = AgentState.READY;
-		heading = Heading.NORTH; // just set a default
+		
+		rand = new Random();
+		setRandomHeading(rand.nextInt(4));
+		x = rand.nextInt(WORLD_SIZE + 1);
+		y = rand.nextInt(WORLD_SIZE + 1);
 	}
 	
 	public synchronized String toString() { return name + ".state = " + state; }
@@ -54,6 +59,20 @@ public abstract class Agent extends Model implements Runnable
 		
 	}
 	
+	public void setRandomHeading(int rand)
+	{
+		if (rand == 0)
+			heading = Heading.NORTH;
+		else if (rand == 1)
+			heading = Heading.EAST;
+		else if (rand == 2)
+			heading = Heading.SOUTH;
+		else if (rand == 3)
+			heading = Heading.WEST;
+		else // shouldn't be a fourth case, just set a default if this occurs
+			heading = Heading.NORTH;
+	}
+	
 	public void setHeading(Heading heading)
 	{
 		this.heading = heading;
@@ -64,6 +83,18 @@ public abstract class Agent extends Model implements Runnable
 		this.sim = sim; // agent.SetSimlation(this); goes within addAgent within Simulation
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public Heading getHeading() {
+		return heading;
+	}
+
+	public Simulation getSim() {
+		return sim;
+	}
+
 	@Override
 	public void run() {
 		thread = Thread.currentThread(); // catch my thread
