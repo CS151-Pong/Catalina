@@ -1,3 +1,11 @@
+/* Created by Catalina Lamboglia 4/4/2020
+ * Added getView 4/6 by Catalina
+ * 
+ * 
+ * 
+ */
+
+
 package SimStation;
 
 import mvc.*;

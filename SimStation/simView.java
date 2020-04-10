@@ -9,6 +9,10 @@ import mvc.*;
 
 public class simView extends View {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4890019208920195218L;
 	public simView(Model model) {
 		super(model);
 	}

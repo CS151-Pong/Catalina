@@ -1,14 +1,15 @@
 package SimStation;
 
-import mvc.Model;
+public class RandomWalkSimulation extends Simulation{
 
-//import MVC.Model;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3753899302397629515L;
 
-public class RandomWalkSimulation extends SimStationFactory {
-public RandomWalkSimulation(){
-	super();
-}
-public Model makeModel() {
-	return new Drunk("drunk");
-}
+	@Override
+	public void populate()
+	{
+		
+	}
 }

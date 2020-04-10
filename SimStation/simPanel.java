@@ -8,6 +8,10 @@ import javax.swing.JPanel;
 import mvc.*;
 
 public class simPanel extends AppPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1827719495886772240L;
 	private JButton Start;
 	private JButton Suspend;
 	private JButton Resume;

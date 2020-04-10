@@ -13,6 +13,7 @@ public class Drunk extends Agent
 		super(name);
 		steps= random.nextInt(10)+1;
 	}
+	
 	public void update() 
 	{
 		this.setRandomHeading(random.nextInt(4));
