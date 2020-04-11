@@ -20,10 +20,11 @@ public abstract class Agent extends Model implements Runnable
 	protected String name;
 	protected Heading heading;
 	protected Simulation sim;
-	private int x, y;
+	private volatile int x;
+	private volatile int y;
 	private AgentState state;
 	private static int WORLD_SIZE = 250;
-	Random rand;
+	private Random rand;
 	//private boolean suspend = false;
 	
 	public Agent(String name) 
@@ -81,6 +82,8 @@ public abstract class Agent extends Model implements Runnable
 			heading = Heading.WEST;
 		else // shouldn't be a fourth case, just set a default if this occurs
 			heading = Heading.NORTH;
+
+		changed();
 	}
 	
 	public void setHeading(Heading heading)
@@ -106,7 +109,7 @@ public abstract class Agent extends Model implements Runnable
 	}
 
 	@Override
-	public synchronized void run() {
+	public void run() {
 		//thread = Thread.currentThread(); // catch my thread
 		while(!isStopped()) 
 		{
@@ -144,13 +147,14 @@ public abstract class Agent extends Model implements Runnable
 			state = AgentState.RUNNING;
 			notify();
 		}
+		changed();
 	}
 	public void stop()
 	{
 		state = AgentState.STOPPED;
 	}
 	
-	public synchronized void move(int steps)
+	public void move(int steps)
 	{
 		switch(heading)
 		{
@@ -162,20 +166,20 @@ public abstract class Agent extends Model implements Runnable
 			}
 			case SOUTH:
 			{
-				y = y + steps; // move up
-				if (y > WORLD_SIZE) // don't below screen
+				y = y + steps; // move down
+				if (y > WORLD_SIZE) // don't go below screen
 					y = WORLD_SIZE;
 			}
 			case EAST:
 			{
-				x = x + steps; // move up
+				x = x + steps; // move right
 				if (x > WORLD_SIZE) // don't go off the right size
 					x = WORLD_SIZE;
 			}
 				
 			case WEST:
 			{
-				x = x - steps; // move up
+				x = x - steps; // move left
 				if (x < 0) // don't go off the left side
 					x = 0;
 			}

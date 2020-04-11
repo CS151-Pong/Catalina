@@ -1,3 +1,10 @@
+/* Created by Allan 4/6/2020
+ * Edited by Catalina 4/10 Made global Simulation, rewrote both constructor and paintComponent
+ * 
+ * 
+ * 
+ */
+
 package SimStation;
 
 import java.awt.Color;
@@ -27,8 +34,6 @@ public class simView extends View {
 	public void paintComponent(Graphics gc) 
 	{
 		
-		//
-		
 		Color oldColor = gc.getColor();
 		gc.setColor(Color.RED); 	// fills the circle to a new color then sets it back
 		for (Agent a : sim.getAgents())
@@ -36,7 +41,6 @@ public class simView extends View {
 			gc.fillOval(a.getX(), a.getY(), 5, 5);
 		}
 		
-
 		gc.setColor(oldColor);
 	}
 }

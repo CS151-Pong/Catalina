@@ -7,6 +7,7 @@
 package SimStation;
 
 import java.util.Random;
+//import java.util.concurrent.ThreadLocalRandom;
 
 import utils.*;
 
@@ -22,10 +23,11 @@ public class Drunk extends Agent
 	
 	public void update() 
 	{
+		//ThreadLocalRandom.current().nextInt(min, max + 1);
 		this.setRandomHeading(random.nextInt(4));
 		steps = random.nextInt(9)+1;
 		move(steps);
-		changed();
+		//changed();
 	}
 	
 	public int getSteps() {
