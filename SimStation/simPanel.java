@@ -20,7 +20,7 @@ public class simPanel extends AppPanel{
 	
 	public simPanel(AppFactory factory) {
 		super(factory);
-		simView view = new simView((Agent)model);// cast name of model 
+		simView view = new simView((Simulation)model);// cast name of model 
 		this.setLayout(new GridLayout(1, 2));
 		
 		Start = new JButton("Start");
@@ -39,7 +39,7 @@ public class simPanel extends AppPanel{
 		buttonPanel.setLayout(new GridLayout(5,1));
 		
 		JPanel j=new JPanel();
-				j.add(Start);
+		j.add(Start);
 		buttonPanel.add(j);
 		
 		j=new JPanel();
@@ -60,6 +60,7 @@ public class simPanel extends AppPanel{
 
 		add(buttonPanel, "West");
 		add(view,"East");
+		//add(view);
 	}
 
 }

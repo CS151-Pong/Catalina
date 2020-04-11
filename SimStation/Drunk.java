@@ -1,3 +1,9 @@
+/* Created by Allan 4/4/2020
+ * Edited by Catalina 4/10 Changed randomHeading to setRandomHeading and random number generations
+ * 
+ * 
+ * 
+ */
 package SimStation;
 
 import java.util.Random;
@@ -17,8 +23,9 @@ public class Drunk extends Agent
 	public void update() 
 	{
 		this.setRandomHeading(random.nextInt(4));
-		steps= random.nextInt(9)+1;
+		steps = random.nextInt(9)+1;
 		move(steps);
+		changed();
 	}
 	
 	public int getSteps() {

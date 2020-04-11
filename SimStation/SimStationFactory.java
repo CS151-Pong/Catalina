@@ -44,7 +44,7 @@ public class SimStationFactory implements SimFactory
 	@Override
 	public Model makeModel() {
 		//return new Agent();
-		return null;
+		return new Simulation();
 	}
 
 	@Override

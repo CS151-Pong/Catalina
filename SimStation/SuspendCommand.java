@@ -1,3 +1,9 @@
+/* Created by Catalina 4/4/2020
+ * Edited by Catalina 4/10 Changed execute to Simulation instead of Agent
+ * 
+ * 
+ * 
+ */
 package SimStation;
 
 
@@ -12,8 +18,8 @@ public class SuspendCommand extends Command
 	
 	public void execute()
 	{
-		Agent agent = (Agent)model;
-		agent.suspend();
+		Simulation sim = (Simulation)model;
+		sim.suspend();
 	}
 
 }

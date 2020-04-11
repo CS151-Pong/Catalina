@@ -1,3 +1,9 @@
+/* Created by Catalina 4/10/2020
+ * 
+ * 
+ * 
+ * 
+ */
 package SimStation;
 
 public class RandomWalkSimulation extends Simulation{
@@ -10,6 +16,17 @@ public class RandomWalkSimulation extends Simulation{
 	@Override
 	public void populate()
 	{
-		
+		Drunk drunk;
+		for (int i = 0; i<50; i++)
+		{
+			drunk = new Drunk("Drunk #" + i);
+			this.addAgent(drunk);
+		}
+	}
+	
+	public static void main(String[] args) {
+		RandomWalkFactory factory = new RandomWalkFactory();
+		simPanel panel = new simPanel(factory);
+		panel.display();
 	}
 }

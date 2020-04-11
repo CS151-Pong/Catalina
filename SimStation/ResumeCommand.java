@@ -11,8 +11,8 @@ public class ResumeCommand extends Command
 	
 	public void execute()
 	{
-		Agent agent = (Agent)model;
-		agent.resume();
+		Simulation sim = (Simulation)model;
+		sim.resume();
 	}
 
 }

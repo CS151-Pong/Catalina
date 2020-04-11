@@ -1,3 +1,10 @@
+/* Created by Andrew 4/5/2020
+ * Edited by Catalina 4/10 made getStats
+ * 
+ * 
+ * 
+ */
+
 package SimStation;
 
 import mvc.*;
@@ -18,7 +25,7 @@ public class Simulation extends Model{
 	 * 
 	 */
 	private static final long serialVersionUID = -6607143526781513246L;
-
+	public static int WORLD_SIZE = 250;
 
 	public Simulation() {
 		super();
@@ -35,6 +42,11 @@ public class Simulation extends Model{
 	public void addAgent(Agent a) {
 		agent.add(a);
 		a.setSimulation(this);
+	}
+	
+	public List<Agent> getAgents()
+	{
+		return agent;
 	}
 	
 	private void startTimer() {
@@ -58,11 +70,9 @@ public class Simulation extends Model{
     public void getStats()
     {
     	String stats = "#agents = " + agent.size() + "\n clock = " + clock;
-    	JOptionPane.showInputDialog(
+    	JOptionPane.showMessageDialog(
                 new Frame(),
-                stats,
-                "Change Heading",
-                JOptionPane.PLAIN_MESSAGE);
+                stats);
     }
 
 	public void setClock(int clock) {
@@ -128,8 +138,11 @@ public class Simulation extends Model{
 		}
 		return temporary;
 	}
-	public void populate() {
+	
+	public void populate() 
+	{
 		//override something
+
 	}
 	
 }

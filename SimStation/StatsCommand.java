@@ -1,3 +1,9 @@
+/* Created by Catalina 4/4/2020
+ * Edited by Catalina 4/10 Changed execute to Simulation instead of Agent
+ * 
+ * 
+ * 
+ */
 package SimStation;
 
 import mvc.Command;

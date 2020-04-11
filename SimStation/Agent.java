@@ -1,10 +1,9 @@
 /* Created by Catalina Lamboglia 4/4/2020
  * Created setRandomHeading 4/6 by Catalina
- * 
+ * Edited run 4/10 Catalina, added setThread
  * 
  * 
  */
-
 
 package SimStation;
 
@@ -17,7 +16,7 @@ public abstract class Agent extends Model implements Runnable
 {
 	
 	private static final long serialVersionUID = 8402972125725120175L;
-	private Thread thread;
+	private transient Thread thread;
 	protected String name;
 	protected Heading heading;
 	protected Simulation sim;
@@ -27,9 +26,11 @@ public abstract class Agent extends Model implements Runnable
 	Random rand;
 	//private boolean suspend = false;
 	
-	public Agent(String name) {
+	public Agent(String name) 
+	{
 		this.name = name;
 		state = AgentState.READY;
+		setThread(new Thread(this));
 		
 		rand = new Random();
 		setRandomHeading(rand.nextInt(4));
@@ -40,6 +41,7 @@ public abstract class Agent extends Model implements Runnable
 	public synchronized String toString() { return name + ".state = " + state; }
 	public synchronized int getX() {return x;}
 	public synchronized int getY() {return y;}
+	public void setThread(Thread thread) {this.thread = thread;}
 	
 	public synchronized AgentState getState() { return state; }
 	
@@ -104,12 +106,12 @@ public abstract class Agent extends Model implements Runnable
 	}
 
 	@Override
-	public void run() {
-		thread = Thread.currentThread(); // catch my thread
+	public synchronized void run() {
+		//thread = Thread.currentThread(); // catch my thread
 		while(!isStopped()) 
 		{
-			state = AgentState.RUNNING;
 			update();
+			
 			try 
 			{
 				Thread.sleep(100); // be cooperative
@@ -119,13 +121,17 @@ public abstract class Agent extends Model implements Runnable
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			changed();
 		}
+		
 	}
 	
 	public void start()
 	{
-		thread = new Thread();
+		//thread = new Thread(this);
 		thread.start();
+		state = AgentState.RUNNING;
+		changed();
 	}
 	
 	public void suspend()
@@ -144,7 +150,7 @@ public abstract class Agent extends Model implements Runnable
 		state = AgentState.STOPPED;
 	}
 	
-	public void move(int steps)
+	public synchronized void move(int steps)
 	{
 		switch(heading)
 		{
@@ -174,13 +180,10 @@ public abstract class Agent extends Model implements Runnable
 					x = 0;
 			}
 		}
+		changed();
 	}
 	
 	public abstract void update();
-	
-	
-	
-	
 	
 	
 }
