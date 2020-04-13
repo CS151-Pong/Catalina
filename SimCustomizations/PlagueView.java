@@ -1,3 +1,8 @@
+/* Created by Catalina 4/12
+ * 
+ * 
+ * 
+ */
 package SimCustomizations;
 
 import java.awt.Color;
@@ -11,8 +16,6 @@ import SimStation.Simulation;
 import SimStation.simView;
 import mvc.Model;
 
-
-
 public class PlagueView extends simView implements ActionListener
 {
 
@@ -24,7 +27,6 @@ public class PlagueView extends simView implements ActionListener
 		super(model);
 		setSize(Simulation.WORLD_SIZE, Simulation.WORLD_SIZE);
 		sim = (PlagueSimulation)model;
-		//sim.populate();
 		timer.start();
 		
 	}

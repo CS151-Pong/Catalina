@@ -26,8 +26,7 @@ public abstract class Agent extends Model implements Runnable
 	private AgentState state;
 	private static int WORLD_SIZE = 250;
 	private Random rand;
-	//private boolean suspend = false;
-	
+
 	public Agent(String name) 
 	{
 		this.name = name;
@@ -93,7 +92,7 @@ public abstract class Agent extends Model implements Runnable
 		heading=newHeading;
 	}
 	
-	public void setSimulation(Simulation sim) // set this in Simlation when Sim adds Agents
+	public void setSimulation(Simulation sim) // set this in Simulation when Sim adds Agents
 	{
 		this.sim = sim; // agent.SetSimlation(this); goes within addAgent within Simulation
 	}
@@ -112,7 +111,6 @@ public abstract class Agent extends Model implements Runnable
 
 	@Override
 	public void run() {
-		//thread = Thread.currentThread(); // catch my thread
 		while(!isStopped()) 
 		{
 			update();
@@ -133,7 +131,6 @@ public abstract class Agent extends Model implements Runnable
 	
 	public void start()
 	{
-		//thread = new Thread(this);
 		thread.start();
 		state = AgentState.RUNNING;
 		changed();
@@ -196,7 +193,7 @@ public abstract class Agent extends Model implements Runnable
 	}
 	
 	public abstract void update();
-	//to be overrided
+	//to be overridden
 	
 	
 }

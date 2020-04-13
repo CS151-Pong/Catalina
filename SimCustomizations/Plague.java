@@ -1,3 +1,10 @@
+/* Created by Catalina 4/12/2020
+ * 
+ * 
+ * 
+ * 
+ */
+
 package SimCustomizations;
 
 import java.util.Random;
@@ -7,7 +14,10 @@ import SimStation.*;
 
 public class Plague extends Agent
 {
-	private int speed;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4516170262356193911L;
 	private int steps;
 	private Random random = new Random();
 	private Simulation simulation;
@@ -20,7 +30,7 @@ public class Plague extends Agent
 	public Plague(String name) {
 		super(name);
 		this.setRandomHeading();
-		speed = steps = random.nextInt(10)+1;
+		steps = random.nextInt(10)+1;
 		randomlyStartInfected();
 	}
 

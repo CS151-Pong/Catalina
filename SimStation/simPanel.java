@@ -1,3 +1,9 @@
+/* Created by Allan 4/6/2020
+ * 
+ * 
+ * 
+ */
+
 package SimStation;
 
 import java.awt.GridLayout;
@@ -9,10 +15,6 @@ import mvc.*;
 
 public class simPanel extends AppPanel
 {
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1827719495886772240L;
 	private JButton Start;
 	private JButton Suspend;
@@ -62,9 +64,8 @@ public class simPanel extends AppPanel
 
 		add(buttonPanel, "West");
 		add(view,"East");
-		//frame.getContentPane().add(screen);
+		
 		view.validate();
-		//add(view);
 	}
 
 }

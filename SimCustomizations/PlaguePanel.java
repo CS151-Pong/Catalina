@@ -1,14 +1,17 @@
+/* Created by Catalina 4/12
+ * 
+ * 
+ * 
+ */
+
 package SimCustomizations;
 
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
 import SimStation.Simulation;
-import SimStation.simView;
 import mvc.*;
-import SimStation.*;
+
 
 public class PlaguePanel extends AppPanel
 {

@@ -11,8 +11,6 @@ package SimCustomizations;
 import SimStation.SimStationFactory;
 import mvc.Model;
 
-//import MVC.Model;
-
 public class RandomWalkFactory extends SimStationFactory {
 	
 	public RandomWalkFactory(){

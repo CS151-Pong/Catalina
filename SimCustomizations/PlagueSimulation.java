@@ -1,3 +1,8 @@
+/* Created by Catalina 4/12
+ * 
+ * 
+ * 
+ */
 package SimCustomizations;
 
 import java.awt.Frame;
@@ -7,6 +12,11 @@ import SimStation.*;
 
 public class PlagueSimulation extends Simulation
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1677099662819555045L;
+
 	public void populate()
 	{
 		Plague p;
