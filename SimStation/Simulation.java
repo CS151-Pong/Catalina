@@ -34,7 +34,7 @@ public class Simulation extends Model{
 	private Timer timer;
 	private int clock = 0;
 
-	List<Agent> agent = new ArrayList<Agent>();
+	protected List<Agent> agent = new ArrayList<Agent>();
 	
 	
 	//Agent ask, neighbor, candidate;

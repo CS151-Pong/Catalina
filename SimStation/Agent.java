@@ -9,6 +9,7 @@ package SimStation;
 
 import java.util.Random;
 
+import mvc.Utilities;
 import mvc.*;
 
 
@@ -34,7 +35,7 @@ public abstract class Agent extends Model implements Runnable
 		setThread(new Thread(this));
 		
 		rand = new Random();
-		setRandomHeading(rand.nextInt(4));
+		setRandomHeading();
 		x = rand.nextInt(WORLD_SIZE + 1);
 		y = rand.nextInt(WORLD_SIZE + 1);
 	}
@@ -70,8 +71,9 @@ public abstract class Agent extends Model implements Runnable
 		
 	}
 	
-	public void setRandomHeading(int rand)
+	public void setRandomHeading()
 	{
+		int rand= Utilities.rng.nextInt(4);
 		if (rand == 0)
 			heading = Heading.NORTH;
 		else if (rand == 1)
@@ -86,9 +88,9 @@ public abstract class Agent extends Model implements Runnable
 		changed();
 	}
 	
-	public void setHeading(Heading heading)
+	public void setHeading(Heading newHeading)
 	{
-		this.heading = heading;
+		heading=newHeading;
 	}
 	
 	public void setSimulation(Simulation sim) // set this in Simlation when Sim adds Agents
@@ -161,33 +163,40 @@ public abstract class Agent extends Model implements Runnable
 			case NORTH:
 			{
 				y = y - steps; // move up
-				if (y < 0) // don't go above the screen
+				if (y < 0) { // don't go above the screen
 					y = 0;
+				}
+				break;
 			}
 			case SOUTH:
 			{
 				y = y + steps; // move down
-				if (y > WORLD_SIZE) // don't go below screen
-					y = WORLD_SIZE;
+				if (y > WORLD_SIZE) { // don't go below screen
+					y = WORLD_SIZE;}
+				break;
 			}
 			case EAST:
 			{
+
 				x = x + steps; // move right
-				if (x > WORLD_SIZE) // don't go off the right size
-					x = WORLD_SIZE;
+				if (x > WORLD_SIZE) { // don't go off the right size
+					x = WORLD_SIZE;}
+				break;
 			}
 				
 			case WEST:
 			{
 				x = x - steps; // move left
-				if (x < 0) // don't go off the left side
-					x = 0;
+				if (x < 0) { // don't go off the left side
+					x = 0;}
+				break;
 			}
 		}
 		changed();
 	}
 	
 	public abstract void update();
+	//to be overrided
 	
 	
 }

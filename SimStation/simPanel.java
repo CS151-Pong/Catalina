@@ -7,7 +7,9 @@ import javax.swing.JPanel;
 
 import mvc.*;
 
-public class simPanel extends AppPanel{
+public class simPanel extends AppPanel
+{
+	
 	/**
 	 * 
 	 */
@@ -60,6 +62,8 @@ public class simPanel extends AppPanel{
 
 		add(buttonPanel, "West");
 		add(view,"East");
+		//frame.getContentPane().add(screen);
+		view.validate();
 		//add(view);
 	}
 
