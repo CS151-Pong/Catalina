@@ -13,7 +13,6 @@ import mvc.*;
 public class SimStationFactory implements SimFactory
 {
 
-
 	public String[] getEditCommands() { return new String[] {"Start", "Stats", "Stop", "Suspend", "Resume"}; }
 
 	public Command makeEditCommand(Model model, String type) {
@@ -43,7 +42,6 @@ public class SimStationFactory implements SimFactory
 
 	@Override
 	public Model makeModel() {
-		//return new Agent();
 		return new Simulation();
 	}
 

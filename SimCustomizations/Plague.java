@@ -25,7 +25,7 @@ public class Plague extends Agent
 	public static int VIRULENCE = 50; // % chance of infection
 	public static int RESISTANCE = 2; // % chance of resisting infection
 	private boolean infected = false;
-	private int chance;
+	private int chance; // can be locally created instead
 	
 	public Plague(String name) {
 		super(name);
@@ -42,7 +42,6 @@ public class Plague extends Agent
 		
 		plague = (Plague)simulation.getNeighbor(this);
 		infect(plague);
-		
 		
 		this.setRandomHeading();
 		move(steps);
