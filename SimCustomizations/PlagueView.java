@@ -24,7 +24,7 @@ public class PlagueView extends simView implements ActionListener
 		super(model);
 		setSize(Simulation.WORLD_SIZE, Simulation.WORLD_SIZE);
 		sim = (PlagueSimulation)model;
-		sim.populate();
+		//sim.populate();
 		timer.start();
 		
 	}

@@ -26,8 +26,8 @@ public class PlaguePanel extends AppPanel
 	
 	public PlaguePanel(AppFactory factory) {
 		super(factory);
-		PlagueView view = new PlagueView((Simulation)model);// cast name of model 
 		
+		PlagueView view = new PlagueView((Simulation)model);// cast name of model 
 		this.setLayout(new GridLayout(1, 2));
 		
 		Start = new JButton("Start");

@@ -1,7 +1,6 @@
 package SimCustomizations;
 
 import java.awt.Frame;
-
 import javax.swing.JOptionPane;
 
 import SimStation.*;
@@ -20,7 +19,7 @@ public class PlagueSimulation extends Simulation
 	
 	public String percentInfected()
 	{
-		int infected = 0;
+		double infected = 0;
 		Plague plague;
 		for (Agent a : this.getAgents())
 		{
@@ -29,7 +28,7 @@ public class PlagueSimulation extends Simulation
 				infected++;
 		}
 		
-		return "" + infected/this.getAgents().size();
+		return "" + (infected / this.getAgents().size()) * 100.00;
 		
 	}
 	

@@ -13,7 +13,7 @@ import mvc.Utilities;
 import mvc.*;
 
 
-public abstract class Agent extends Model implements Runnable 
+public abstract class Agent extends Model implements Runnable
 {
 	
 	private static final long serialVersionUID = 8402972125725120175L;
