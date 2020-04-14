@@ -15,6 +15,9 @@ public class PlagueFactory extends SimStationFactory {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String getTitle() { return "Plague"; }
+	
 	public Model makeModel() {
 		return new PlagueSimulation();
 	}

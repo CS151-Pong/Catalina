@@ -14,6 +14,9 @@ public class FlockFactory extends SimStationFactory {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String getTitle() { return "Flock"; }
+	
 	public Model makeModel() {
 		return new FlockSimulation();
 	}
