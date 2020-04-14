@@ -1,3 +1,8 @@
+/* Created by Allan 4/12/2020
+ * 
+ * 
+ * 
+ */
 package Prisoner;
 
 import java.util.ArrayList;
@@ -94,7 +99,6 @@ public void update() {
 			}
 			
 		}
-//System.out.println(cheaters+"/"+cooperators+"/"+reciproicator+"/"+random);
 		System.out.println("\n Cooperator's average = " + fitnessCooperators
 			+ "\n Cheater's average = " + fitnessCheaters
 			+ "\n Reciproicator's average = " + fitnessReciproicator 

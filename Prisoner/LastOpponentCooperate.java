@@ -1,3 +1,8 @@
+/* Created by Allan 4/12/2020
+ * 
+ * 
+ * 
+ */
 package Prisoner;
 
 public class LastOpponentCooperate extends Cooperate{
