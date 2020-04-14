@@ -40,10 +40,11 @@ public class Plague extends Agent
 		
 		simulation = this.getSim();
 		
-		plague = (Plague)simulation.getNeighbor(this);
+		plague = (Plague)simulation.getNeighbor(this, 10);
 		infect(plague);
 		
 		this.setRandomHeading();
+		steps = random.nextInt(10)+1;
 		move(steps);
 		
 	}

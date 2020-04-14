@@ -7,10 +7,7 @@
 package RandomWalk;
 
 import java.util.Random;
-//import java.util.concurrent.ThreadLocalRandom;
-
 import SimStation.Agent;
-import utils.*;
 
 public class RandomWalk extends Agent
 {
@@ -27,7 +24,7 @@ public class RandomWalk extends Agent
 		this.setRandomHeading();
 		steps = random.nextInt(10)+1;
 		move(steps);
-		//changed();
+
 	}
 	
 	public int getSteps() {

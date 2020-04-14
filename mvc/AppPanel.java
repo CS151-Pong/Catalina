@@ -50,6 +50,12 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
 		views.add(view);
 	}
 	
+	@Override
+	public Component add(Component c) {
+		if ( c instanceof View ) add((View)c);
+		return super.add(c);
+	}
+	
 	public void display()
 	{
 		frame.setVisible(true);

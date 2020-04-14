@@ -13,7 +13,8 @@ import mvc.Model;
 
 public class RandomWalkFactory extends SimStationFactory {
 	
-	public RandomWalkFactory(){
+	public RandomWalkFactory()
+	{
 		super();
 	}
 	
@@ -22,6 +23,4 @@ public class RandomWalkFactory extends SimStationFactory {
 	public Model makeModel() {
 		return new RandomWalkSimulation();
 	}
-	
-
 }

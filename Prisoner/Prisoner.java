@@ -8,8 +8,8 @@ import SimStation.*;
 
 public class Prisoner extends Agent{
 private int fitness = 0;
-public boolean lastOpponentCooperated=false;;
-private Cooperate cooperate;
+public boolean lastOpponentCooperated=false;
+private Cooperate strategy;
 private Simulation sim;
 private Prisoner prisoner;
 
@@ -20,11 +20,11 @@ public Prisoner(String name) {
 	super(name);
 }
 public boolean cooperate() {
-	return cooperate.cooperate();
+	return strategy.cooperate();
 }
 public void update() {
 	sim=this.getSim();
-	prisoner=(Prisoner)sim.getNeighbor(this);
+	prisoner=(Prisoner)sim.getNeighbor(this,20);
 	boolean thisGuy=cooperate();
 	boolean enemy=prisoner.cooperate();
 	//both cooperate
@@ -32,30 +32,28 @@ public void update() {
 		addToFitness(3);
 		prisoner.addToFitness(3);	
 		lastOpponentCooperated=true;
-		
 	}
 	//both cheat
-	if(thisGuy==false&&enemy==false) {
+	else if(thisGuy==false&&enemy==false) {
 		addToFitness(1);
 		prisoner.addToFitness(1);
 		lastOpponentCooperated=false;
 	}
 	//enemy cheat
-	if(thisGuy==true&&enemy==false) {
+	else if(thisGuy==true&&enemy==false) {
 		prisoner.addToFitness(5);
 		lastOpponentCooperated=false;
 	}
 	//this prisoner cheats
-	if(thisGuy==false&&enemy==true) {
+	else if(thisGuy==false&&enemy==true) {
 		addToFitness(5);
 		lastOpponentCooperated=true;
 	}
 	
 	//end of game
 	setRandomHeading();
-	int steps = random.nextInt(9)+1;
+	int steps = random.nextInt(10);
 	move(steps);
-	
 	
 	
 	
@@ -65,34 +63,38 @@ public void update() {
 		int fitnessReciproicator=0;
 		int fitnessRandom=0;
 
+
+
 		for(Agent a: sim.getAgents()) {
-			Prisoner prisoner=(Prisoner)a;
-			Cooperate strat=prisoner.getCooperate();
-			int cheaters=0;
+			Prisoner prisoners=(Prisoner)a;
+			Cooperate strat=prisoners.getCooperate();
+			
 			int cooperators=0;
 			int reciproicator=0;
 			int random=0;
-			if(strat instanceof AlwaysCooperate) {
-				cooperators++;
-				fitnessCooperators=(fitnessCooperators+prisoner.getFitness())/cooperators;
-				
-			}
+			int cheaters=0;
 			if(strat instanceof AlwaysCheat) {
 				cheaters++;
-				fitnessCheaters=(fitnessCheaters+prisoner.getFitness())/cheaters;
+				fitnessCheaters=(fitnessCheaters+prisoners.getFitness())/cheaters;
 				
 			}
-			if(strat instanceof LastOpponentCooperate) {
+			else if(strat instanceof AlwaysCooperate) {
+				cooperators++;
+				fitnessCooperators=(fitnessCooperators+prisoners.getFitness())/cooperators;
+				
+			}
+			else if(strat instanceof LastOpponentCooperate) {
 				reciproicator++;
-				fitnessReciproicator=(fitnessReciproicator+prisoner.getFitness())/reciproicator;
+				fitnessReciproicator=(fitnessReciproicator+prisoners.getFitness())/reciproicator;
 				
 			}
-			if(strat instanceof RandomlyCooperate) {
+			else if(strat instanceof RandomlyCooperate) {
 				random++;
-				fitnessRandom=(fitnessRandom+prisoner.getFitness())/random;
+				fitnessRandom=(fitnessRandom+prisoners.getFitness())/random;
 			}
 			
 		}
+//System.out.println(cheaters+"/"+cooperators+"/"+reciproicator+"/"+random);
 		System.out.println("\n Cooperator's average = " + fitnessCooperators
 			+ "\n Cheater's average = " + fitnessCheaters
 			+ "\n Reciproicator's average = " + fitnessReciproicator 
@@ -100,15 +102,15 @@ public void update() {
 		}
 	}
 public void addToFitness(int amt) {
-	fitness=fitness+amt;
+	fitness+=amt;
 }
 public int getFitness() {
 	return fitness;
 }
 public Cooperate getCooperate() {
-	return cooperate;
+	return strategy;
 }
 public void setCooperate(Cooperate c) {
-	cooperate=c;
+	strategy=c;
 }
 }

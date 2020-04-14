@@ -10,9 +10,7 @@ import SimStation.*;
 
 
 public class Bird extends Agent{
-	private int steps;
 	private int speed;
-	private Heading heading; 
 	private Bird a;
 	
 	private Random random = new Random();
@@ -21,27 +19,20 @@ public class Bird extends Agent{
 	public Bird(String name) {
 		super(name);
 		this.setRandomHeading();
-		speed = steps = random.nextInt(10)+1;
-		// TODO Auto-generated constructor stub
+		speed = random.nextInt(10)+1;
 	}
 
 	@Override
 	public void update() {
-		
 		s = this.getSim();
 		
-		a = (Bird)s.getNeighbor(this);
-		//a.getHeading();
+		a = (Bird)s.getNeighbor(this, 10);
 		copy(a);
-		
-		
-		// TODO Auto-generated method stub
-		
 	}
 	public void copy(Bird b) {
-		heading = b.getHeading();
+		setHeading(b.getHeading());
 		speed = b.getSpeed();
-		move(steps = speed);
+		move(speed);
 	}
 
 	public int getSpeed() {

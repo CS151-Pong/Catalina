@@ -20,7 +20,7 @@ public class SimView extends View implements ActionListener{
 	/**
 	 * 
 	 */
-	private Timer timer = new Timer(1000, this);
+	private Timer timer = new Timer(100, this);
 	private Simulation sim = new Simulation();
 	private static final long serialVersionUID = 4890019208920195218L;
 	
