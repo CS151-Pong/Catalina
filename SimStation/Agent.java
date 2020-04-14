@@ -161,7 +161,7 @@ public abstract class Agent extends Model implements Runnable
 			{
 				y = y - steps; // move up
 				if (y < 0) { // don't go above the screen
-					y = 0;
+					y = WORLD_SIZE - y;
 				}
 				break;
 			}
@@ -169,7 +169,7 @@ public abstract class Agent extends Model implements Runnable
 			{
 				y = y + steps; // move down
 				if (y > WORLD_SIZE) { // don't go below screen
-					y = WORLD_SIZE;}
+					y = y - WORLD_SIZE;}
 				break;
 			}
 			case EAST:
@@ -177,7 +177,7 @@ public abstract class Agent extends Model implements Runnable
 
 				x = x + steps; // move right
 				if (x > WORLD_SIZE) { // don't go off the right size
-					x = WORLD_SIZE;}
+					x = x - WORLD_SIZE;}
 				break;
 			}
 				
@@ -185,7 +185,7 @@ public abstract class Agent extends Model implements Runnable
 			{
 				x = x - steps; // move left
 				if (x < 0) { // don't go off the left side
-					x = 0;}
+					x = WORLD_SIZE - x;}
 				break;
 			}
 		}
